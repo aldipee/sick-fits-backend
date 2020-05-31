@@ -7,7 +7,10 @@ const server = createServer()
 
 server.start(
   {
-    cors: process.env.FRONTEND_URL,
+    cors: {
+      credentials: true,
+      origin: process.env.FRONTEND_URL,
+    },
   },
   seed => {
     console.log(`Server is runnng on port ${seed.port}`)
