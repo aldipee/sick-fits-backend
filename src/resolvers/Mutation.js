@@ -13,6 +13,11 @@ const mutations = {
     )
     return items
   },
+  updateItem(parent, arguments, context, info) {
+    const updates = { ...arguments }
+    delete updates.id
+    return context.db.mutation.updateItem({ data: updates, where: { id: arguments.id } }, info)
+  },
 }
 
 module.exports = mutations
